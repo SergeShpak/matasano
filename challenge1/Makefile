@@ -59,8 +59,11 @@ $(TEST_DIR)/%.o: $(TEST_DIR)/%.c
 	mkdir -p $(BUILD_DIR)/$(dir $@)
 	$(CC) $(CFLAGS) $< -o $(BUILD_DIR)/$@
 
-.PHONY: clean
+.PHONY: clean cleanbuild
 
 clean:
 	-rm -rf $(BUILD_DIR)
 	-rm -rf $(BIN_DIR)
+
+cleanbuild: clean
+	$(MAKE) all

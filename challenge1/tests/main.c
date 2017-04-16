@@ -6,6 +6,5 @@ static void RunAllTests(void) {
 }
 
 int main(int argc, const char **argv) {
-  int i = argc * 3;
   return UnityMain(argc, argv, RunAllTests);
 }

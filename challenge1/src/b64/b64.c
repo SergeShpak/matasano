@@ -65,7 +65,19 @@ size_t b64_encode(const uint8_t *const restrict src, const size_t src_length,
 
 size_t b64_encode_to_string(const uint8_t *const restrict src,
     const size_t src_length, char *restrict *dest) {
-  return -1;
+  if (NULL == src) {
+    *dest = NULL;
+    return -1;
+  }
+  if (0 == src_length) {
+    *dest = "";
+    return 0;
+  }
+  uint8_t *result;
+  size_t result_length;
+  result_length = b64_encode(src, src_length, &result);
+  *dest = (char*) result;
+  return result_length;
 }
 
 size_t b64_decode(const uint8_t *const restrict src, const size_t src_length,
